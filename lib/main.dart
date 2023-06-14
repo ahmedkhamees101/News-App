@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/home_layout.dart';
+import 'package:news_app/Layout/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-         initialRoute: HomeLayout.routeName,
+         initialRoute: Home.routeName,
       routes: {
-           HomeLayout.routeName:(_)=>HomeLayout(),
+           Home.routeName:(_)=>Home(),
       },
 
     ); }
