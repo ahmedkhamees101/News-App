@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/widget/tab_screen.dart';
 import 'package:news_app/shared/network/remote/api_manager.dart';
 
 import '../model/source_respose.dart';
+import '../style/app_color.dart';
 
 class Home extends StatelessWidget {
   static const String routeName = 'home';
@@ -10,9 +12,17 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        toolbarHeight: 70,
+             elevation: 0,
+        shape: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.transparent),
+          borderRadius: BorderRadius.only(bottomLeft:Radius.circular(25) ,bottomRight:Radius.circular(25) )
+        ),
         title: Text("News App"),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryGreen,
       ),
-      backgroundColor: Colors.white,
       body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -33,9 +43,7 @@ class Home extends StatelessWidget {
             );
           }
           List<Sources>? source = snapshot.data?.sources??[];
-          return ListView.builder(itemBuilder:(context, index) {
-            return Text(source[index].name??"");
-          },itemCount: source.length, );
+          return TabScreen(source);
         },
         future: ApiManager.getResource(),
       ),

@@ -7,7 +7,7 @@ import 'package:news_app/shared/components/constants.dart';
 
 class ApiManager{
  static Future <SourcesResponse> getResource()async{
-  Uri url= Uri.https(base,"/v2/top-headlines/sources",{
+  Uri url= Uri.https(baseUrl,"/v2/top-headlines/sources",{
     "apiKey":apiKey
   });
          http.Response response=await http.get(url);
