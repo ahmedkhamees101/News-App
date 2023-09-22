@@ -10,13 +10,25 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("News App"),
+        toolbarHeight: 70,
+        backgroundColor: Colors.green,
+        title: Text("News App",style: TextStyle(
+          fontSize: 22
+        ),),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25)
+          )
+        ),
+        centerTitle: true,
       ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(
+              color: Colors.green,
+            ));
           }
           if (snapshot.hasError) {
             return Column(
